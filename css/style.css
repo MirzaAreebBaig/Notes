@@ -1,0 +1,517 @@
+        :root {
+            --bg-primary: #F5F5F5;
+            --bg-secondary: #ffffff;
+            --text-primary: #333333;
+            --border-color: #ddd;
+        }
+
+        .dark-theme {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #ffffff;
+            --border-color: #404040;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Calibri', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 140px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .main-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 20%;
+            background: var(--bg-secondary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .notepad-container {
+            width: 80%;
+            background: var(--bg-secondary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        #notepad {
+            width: 100%;
+            height: 70vh;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 16px;
+            line-height: 1.6;
+            resize: vertical;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Calibri', sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .status {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .stats {
+            font-size: 0.9em;
+        }
+
+        .save-status {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .save-status.visible {
+            opacity: 1;
+        }
+
+        .saved-notes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .note-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .note-item .delete-btn {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 14px;
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .note-item:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .note-item .delete-btn:hover {
+            color: #ff0000;
+        }
+
+        .note-content {
+            padding-right: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-secondary);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .control-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: inherit;
+        }
+
+        .control-btn:hover {
+            opacity: 0.9;
+        }
+
+        .control-btn.active {
+            background: #4a90e2;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar, .notepad-container {
+                width: 100%;
+            }
+
+            body {
+                padding: 10px;
+                padding-bottom: 180px;
+            }
+
+            .control-row {
+                flex-direction: column;
+            }
+
+            .control-btn {
+                justify-content: center;
+            }
+        }
+        .note-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .timestamp {
+            font-size: 0.75em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .dark-theme .timestamp {
+            color: #999;
+        }
+
+        .note-content {
+            padding-right: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+                .reminder-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1001;
+            width: 90%;
+            max-width: 400px;
+            display: none;
+        }
+
+        .reminder-dialog.visible {
+            display: block;
+        }
+
+        .reminder-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .reminder-btn {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .reminder-btn.cancel {
+            background: #666;
+        }
+
+        .reminder-list {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .reminder-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reminder-text {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .reminder-time {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .dark-theme .reminder-time {
+            color: #999;
+        }
+
+        .reminder-delete {
+            background: none;
+            border: none;
+            color: #ff4444;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        .reminder-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: none;
+            z-index: 1002;
+        }
+
+        .reminder-notification.visible {
+            display: block;
+            animation: fadeInOut 3s forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1000;
+        }
+
+        .overlay.visible {
+            display: block;
+        }
+        .time-picker {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 15px 0;
+        }
+
+        .time-input {
+            padding: 8px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            width: 70px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .time-label {
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .reminder-dialog {
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .reminder-preview {
+            margin: 10px 0;
+            padding: 10px;
+            background: var(--bg-primary);
+            border-radius: 4px;
+            font-size: 14px;
+            max-height: 80px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        .time-error {
+            color: #ff4444;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .time-error.visible {
+            display: block;
+        }
+        .title-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+.search-container {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.search-input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.highlight {
+    background-color: rgba(255, 255, 0, 0.3);
+}
+
+.no-results {
+    font-style: italic;
+    color: #888;
+    padding: 10px 0;
+}
+.acknowledgments-container {
+    margin-top: 30px;
+    background: var(--bg-secondary);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+}
+
+.acknowledgments-container h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4a90e2;
+    margin-top: 0;
+}
+
+.acknowledgments-intro {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.acknowledgments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feature-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 12px;
+    border-radius: 6px;
+    background: var(--bg-primary);
+    border-left: 4px solid #4a90e2;
+}
+
+.feature-icon {
+    font-size: 24px;
+    color: #4a90e2;
+    margin-top: 5px;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.feature-description {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.feature-requester {
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #666;
+}
+
+.dark-theme .feature-requester {
+    color: #aaa;
+}
+
+.feature-date {
+    font-size: 0.8em;
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .feature-item {
+        flex-direction: column;
+    }
+    
+    .feature-icon {
+        display: none;
+    }
+}
