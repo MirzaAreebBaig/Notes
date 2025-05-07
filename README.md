@@ -42,7 +42,7 @@ Access the app directly: [https://notes.onebrain.me](https://notes.onebrain.me)
 To contribute or run locally:
 
 ```bash
-git clone https://github.com/your-username/notes.onebrain.me.git
+git clone https://github.com/mirzaareebbaig/notes.git
 cd notes.onebrain.me
 # Open index.html in your browser
 ```
