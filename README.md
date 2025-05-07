@@ -43,7 +43,7 @@ To contribute or run locally:
 
 ```bash
 git clone https://github.com/mirzaareebbaig/notes.git
-cd notes.onebrain.me
+cd Notes
 # Open index.html in your browser
 ```
 # 💬 Feedback & Contributions
