@@ -5,6 +5,7 @@
 ## 🔍 Live App
 
 Access the app directly: [https://notes.onebrain.me](https://notes.onebrain.me)
+Download the Chrome Extension: [https://chromewebstore.google.com/detail/notepad-onebrain/kepelpkilkfhmkminilfcfjegleleojf](https://chromewebstore.google.com/detail/notepad-onebrain/kepelpkilkfhmkminilfcfjegleleojf)
 
 ---
 
