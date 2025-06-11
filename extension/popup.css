@@ -1,0 +1,262 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  min-width: 350px;
+  background: #181a1b;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 22px 18px 18px 18px;
+  min-height: 420px;
+  position: relative;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#header h1 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+#status {
+  color: #faad14;
+  font-size: 13px;
+  margin-left: 10px;
+  font-weight: 400;
+}
+
+#notes-list {
+  max-height: 295px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.note {
+  background: #23272b;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(70, 130, 255, 0.09), 0 1.5px 7px rgba(20, 20, 20, 0.16);
+  padding: 16px 18px 10px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: box-shadow 0.23s, border 0.18s;
+  border: 1.5px solid transparent;
+  position: relative;
+}
+
+.note:hover {
+  box-shadow: 0 8px 24px rgba(70, 130, 255, 0.14);
+  border-color: #486FF8;
+}
+
+.note-title {
+  font-size: 1.11rem;
+  font-weight: 500;
+  color: #81a1f7;
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.note-content {
+  font-size: 1.03rem;
+  color: #e0e0e0;
+  word-break: break-word;
+  margin-bottom: 2px;
+}
+
+.note-meta {
+  font-size: 0.89rem;
+  color: #a0a0a0;
+  margin-bottom: 3px;
+  margin-top: 1px;
+}
+
+.note-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 7px;
+}
+
+.note-actions button {
+  background: none;
+  border: none;
+  color: #81a1f7;
+  font-size: 13px;
+  padding: 3px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.14s, color 0.14s;
+}
+
+.note-actions button:hover {
+  background: #27324b;
+  color: #ffd166;
+}
+
+.note-actions button.delete-btn {
+  color: #e94e4e;
+}
+
+.note-actions button.delete-btn:hover {
+  background: #2e1919;
+  color: #ff7675;
+}
+
+.fab {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #486FF8 70%, #6D91F5 100%);
+  color: #fff;
+  border: none;
+  font-size: 2.3rem;
+  box-shadow: 0 2px 8px rgba(70, 130, 255, 0.18);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.18s, box-shadow 0.18s;
+}
+
+.fab:hover {
+  background: linear-gradient(135deg, #3554a5 80%, #6D91F5 100%);
+  box-shadow: 0 6px 16px rgba(70, 130, 255, 0.23);
+}
+
+#note-editor {
+  background: #23272b;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(20, 20, 20, 0.16);
+  padding: 18px 16px 14px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeIn 0.2s;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #23272b;
+  color: #f0f0f0;
+  border-bottom: 2px solid #486FF8;
+  border-radius: 4px 4px 0 0;
+  padding: 12px 7px 6px 7px;
+  font-size: 1.06rem;
+  transition: border-bottom 0.16s;
+  resize: none;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-bottom: 2px solid #81a1f7;
+}
+
+.input-group label {
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  color: #b0b0b0;
+  font-size: 1rem;
+  pointer-events: none;
+  background: transparent;
+  transition: 0.13s;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 4px;
+  font-size: 0.85rem;
+  color: #81a1f7;
+  background: #23272b;
+  padding: 0 3px;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  box-shadow: 0 0 0 100px #23272b inset !important;
+  -webkit-text-fill-color: #f0f0f0 !important;
+}
+
+.editor-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.main-btn, .secondary-btn {
+  padding: 8px 22px;
+  border-radius: 4px;
+  font-size: 1.01rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.main-btn {
+  background: linear-gradient(135deg, #486FF8 70%, #6D91F5 100%);
+  color: #fff;
+}
+
+.main-btn:hover {
+  background: linear-gradient(135deg, #3554a5 80%, #6D91F5 100%);
+}
+
+.secondary-btn {
+  background: #31363b;
+  color: #e0e0e0;
+}
+
+.secondary-btn:hover {
+  background: #181a1b;
+  color: #ffd166;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #23272b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #34373c;
+  border-radius: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px);}
+  to { opacity: 1; transform: none;}
+}
